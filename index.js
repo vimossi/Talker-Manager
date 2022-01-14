@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { primeiroReq } = require('./middlewares/1');
+const { segundoReq } = require('./middlewares/2');
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,3 +22,5 @@ app.get('/talker', async (req, res) => {
   const speaker = await primeiroReq();
   res.status(200).json(speaker);
 });
+
+app.get('/talker/:id', segundoReq);

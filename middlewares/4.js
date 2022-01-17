@@ -50,12 +50,20 @@ const ageValidator4 = (req, res, next) => {
 
 const talkValidator4 = (req, res, next) => {
   const { talk } = req.body;
-    
-  if (!talk || !talk.watchedAt || talk.rate === undefined) { 
-    res.status(400).json({ 
-      message: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios' });
+
+  if (!talk) {
+    return res.status(400).json({
+      message: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios',
+    });
   }
-    
+
+  const { watchedAt, rate } = talk;
+  if (rate !== 0 && (!watchedAt || !rate)) {
+    return res.status(400).json({
+      message: 'O campo "talk" é obrigatório e "watchedAt" e "rate" não podem ser vazios',
+    });
+  }
+
   next();   
 };
 
@@ -64,7 +72,7 @@ const whatchedAtValidator4 = (req, res, next) => {
   const dateRgx = /^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/;
    
   if (!dateRgx.test(watchedAt)) {
-    res.status(400).json({
+    return res.status(400).json({
       message: 'O campo "watchedAt" deve ter o formato "dd/mm/aaaa"',
     });
   }

@@ -10,6 +10,7 @@ const { tokenValidator4,
   whatchedAtValidator4,
   rateValidator4,
   talkCreator4 } = require('./middlewares/4');
+const { updateTalker } = require('./middlewares/5');
 
 const app = express();
 app.use(bodyParser.json());
@@ -46,3 +47,12 @@ talkValidator4,
 whatchedAtValidator4,
 rateValidator4,
 talkCreator4);
+
+// 5
+app.put('/talker/:id', tokenValidator4, 
+nameValidator4,
+ageValidator4,
+talkValidator4,
+whatchedAtValidator4,
+rateValidator4,
+updateTalker);

@@ -1,6 +1,6 @@
 const { readFile, writeFile } = require('fs').promises;
 
-const updateTalker = async (req, res) => {
+const updateTalker5 = async (req, res) => {
   const { id } = req.params;
   const { name, age, talk } = req.body;
   const talkers = JSON.parse(await readFile('talker.json', 'utf-8'));
@@ -15,4 +15,4 @@ const updateTalker = async (req, res) => {
   return res.status(200).json(editedTalker);
 };
 
-module.exports = { updateTalker };
+module.exports = { updateTalker5 };

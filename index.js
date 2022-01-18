@@ -10,7 +10,8 @@ const { tokenValidator4,
   whatchedAtValidator4,
   rateValidator4,
   talkCreator4 } = require('./middlewares/4');
-const { updateTalker } = require('./middlewares/5');
+const { updateTalker5 } = require('./middlewares/5');
+const { deleteTalker6 } = require('./middlewares/6');
 
 const app = express();
 app.use(bodyParser.json());
@@ -55,4 +56,7 @@ ageValidator4,
 talkValidator4,
 whatchedAtValidator4,
 rateValidator4,
-updateTalker);
+updateTalker5);
+
+// 6
+app.delete('/talker/:id', tokenValidator4, deleteTalker6);
